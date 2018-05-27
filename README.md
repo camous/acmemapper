@@ -25,7 +25,7 @@ Mapping definition
                 "property" : "systemAfield1"
             },
             "systemB" : {
-                "property : "systemBfield1"
+                "property" : "systemBfield1"
             }
         },
         {
@@ -33,7 +33,7 @@ Mapping definition
                 "property" : "systemAfield2"
             },
             "systemB" : {
-                "property : "systemBfield2"
+                "property" : "systemBfield2"
             }
         }
     ]
