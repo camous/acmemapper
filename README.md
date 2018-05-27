@@ -60,7 +60,7 @@ JObject/JSON output
 
 ## Features
 
-* Nested JSON content mapping
+* [Nested JSON content mapping](https://github.com/camous/acmemapper/wiki/Nested-objects)
 * 1...N mapping definition
 * POCO basic object composition
 * Control flags : `Ignore` / `IgnoreIfNull`
