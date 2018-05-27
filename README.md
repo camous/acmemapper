@@ -45,7 +45,7 @@ C# source code with
     using acmemapper;
     ...
     var mapper = new Mapper("systemA", "systemB");
-    var output = mapper.Map<JObject,JObject>("myobjecttype",new JObject { "systemAfield1" : "mystringvalue" });
+    var output = mapper.Map<JObject,JObject>("myobjecttype",new JObject { { "systemAfield1" : "mystringvalue" } });
 ```
 
 JObject/JSON output
@@ -55,11 +55,16 @@ JObject/JSON output
 }
 ```
 
+## HOW TO
+* First mapping in 5 minutes
+
 ## Features
 
 * Nested JSON content mapping
+* 1...N mapping definition
 * POCO basic object composition
 * Control flags : `Ignore` / `IgnoreIfNull`
 * Basic casting
 * Basic transformation : switch (`map`)
 * Basic method invokation (eg. `ToLowerInvariant`)
+
