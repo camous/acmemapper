@@ -4,7 +4,7 @@
 `ACMEMAPPER` has been initiality developed in context of an Enterprise Service Bus which has to support & manage many mapping activities and update mapping definitions without re-build & deploy.
 
 `ACMEMAPPER` supports by design several entity definitions and no limitation of source & destination systems (including both way mapping). By design, `ACMEMAPPER` supports only as input 2 levels of data (either JSON or POCO object)
-```
+```json
 {
     "level1field" : "value1",
     "nestedobject" : {
@@ -16,7 +16,7 @@
 ## Simple mapping example
 
 Mapping definition
-```
+```json
 {
     "$version" : "1.0",
     "myobjecttype" : [
@@ -41,7 +41,7 @@ Mapping definition
 ```
 
 C# source code with 
-```
+```csharp
     using acmemapper;
     ...
     var mapper = new Mapper("systemA", "systemB");
@@ -49,7 +49,7 @@ C# source code with
 ```
 
 JObject/JSON output
-```
+```json
 {
     "systemBfield1" : "mystringvalue"
 }
