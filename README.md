@@ -1,4 +1,4 @@
-[![Nuget](https://img.shields.io/nuget/v/acmemapper.svg)](http://nugetstatus.com/packages/acmemapper)
+[![Nuget](https://img.shields.io/nuget/v/acmemapper.svg)](https://www.nuget.org/packages/acmemapper)
 
 # ACMEMAPPER
 
