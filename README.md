@@ -1,9 +1,17 @@
 # ACMEMAPPER
 
-`ACMEMAPPER` has been developed focusing on mapping definition maintainability & lisibility rather flexibility & performance: mapping definitions are declared in JSON and reloaded on each new `ACMEMAPPER` object. Many source or destination objects type are supported such `JObject` or any `POCO` ones.
-`ACMEMAPPER` has been initiality developed in context of an Enterprise Service Bus which has to support & manage many mapping activities and supports new mapping definitions without re-build & deploy.
+`ACMEMAPPER` has been developed focusing on mapping definition maintainability & lisibility over flexibility & performance: mapping definitions are declared in JSON and reloaded on each new `ACMEMAPPER` object. Many source or destination objects type are supported such `JObject` or any `POCO` ones.
+`ACMEMAPPER` has been initiality developed in context of an Enterprise Service Bus which has to support & manage many mapping activities and update mapping definitions without re-build & deploy.
 
-`ACMEMAPPER` supports by design several entity definitions and no limitation of source & destination systems (including both way mapping).
+`ACMEMAPPER` supports by design several entity definitions and no limitation of source & destination systems (including both way mapping). By design, `ACMEMAPPER` supports only as input 2 levels of data (either JSON or POCO object)
+```
+{
+    "level1field" : "value1",
+    "nestedobject" : {
+        "level2field" : "subvalue2"
+    }
+}
+```
 
 ## Simple mapping example
 
@@ -27,17 +35,10 @@ Mapping definition
             "systemB" : {
                 "property : "systemBfield2"
             }
-        },
-        {
-            "systemA" : {
-                "property" : "systemAfield1"
-            },
-            "systemC" : {
-                "property : "systemCfield1"
-            }
         }
     ]
 }
+```
 
 C# source code with 
 ```
@@ -53,3 +54,12 @@ JObject/JSON output
     "systemBfield1" : "mystringvalue"
 }
 ```
+
+## Features
+
+* Nested JSON content mapping
+* POCO basic object composition
+* Control flags : `Ignore` / `IgnoreIfNull`
+* Basic casting
+* Basic transformation : switch (`map`)
+* Basic method invokation (eg. `ToLowerInvariant`)
