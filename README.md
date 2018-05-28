@@ -5,16 +5,6 @@
 `ACMEMAPPER` has been developed focusing on mapping definition maintainability & lisibility over flexibility & performance: mapping definitions are declared in JSON and reloaded on each new `ACMEMAPPER` object. Many source or destination objects type are supported such `JObject` or any `POCO` ones.
 `ACMEMAPPER` has been initiality developed in context of an Enterprise Service Bus which has to support & manage many mapping activities and update mapping definitions without re-build & deploy.
 
-`ACMEMAPPER` supports by design several entity definitions and no limitation of source & destination systems (including both way mapping). By design, `ACMEMAPPER` supports only as input 2 levels of data (either JSON or POCO object)
-```json
-{
-    "level1field" : "value1",
-    "nestedobject" : {
-        "level2field" : "subvalue2"
-    }
-}
-```
-
 ## Simple mapping example
 
 Mapping definition
@@ -70,3 +60,14 @@ JObject/JSON output
 * Basic transformation : switch (`map`)
 * Basic method invokation (eg. `ToLowerInvariant`)
 
+## Limitations
+
+`ACMEMAPPER` supports by design several entity definitions and no limitation of source & destination systems (including both way mapping). By design, `ACMEMAPPER` supports only as input 2 levels of data (either JSON or POCO object)
+```json
+{
+    "level1field" : "value1",
+    "nestedobject" : {
+        "level2field" : "subvalue2"
+    }
+}
+```
