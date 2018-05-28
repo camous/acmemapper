@@ -58,7 +58,7 @@ JObject/JSON output
 ```
 
 ## HOW TO
-* First mapping in 5 minutes
+* [First mapping in 5 minutes](https://github.com/camous/acmemapper/wiki/HOW-TO-:-First-mapping-in-Visual-Studio)
 
 ## Features
 
