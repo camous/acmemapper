@@ -154,7 +154,7 @@ namespace Acme.Mapper.CoreTests
         }
 
         [TestMethod]
-        public void MappingWithToArraySubpropertyNonMeged()
+        public void MappingWithToArraySubpropertyNonMerged()
         {
             var inputObject = new JObject {
                      { "sourceproperty1", "stringvalue1" },
