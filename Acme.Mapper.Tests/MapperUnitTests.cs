@@ -28,20 +28,6 @@ namespace Acme.Mapper.Tests
             }
         }
 
-		//[TestMethod, TestCategory("Mapping")]
-		//public void AcmeEmployeeCrmEmployeeContact()
-		//{
-		//	string message = string.Empty;
-		//	if (!CompareInputOutputJSON(
-		//		sourcesystem: "acme",
-		//		sourcejsonpath: @"json\AcmeEmployee_input.json",
-		//		destinationsystem: "crm",
-		//		destinationjsonpath: @"json\AcmeEmployeeCrmEmployeeContact_output.json",
-		//		entity: "employee.contact",
-        //      checkSchema: true,
-		//		message: out message))
-		//		Assert.Fail(message);
-		//}
         
         /// <summary>
         ///
