@@ -200,7 +200,7 @@ namespace acmemapper
                         value = property.Value;
                     else
                     {
-                        string sourceSubproperty = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("fromsubproperty")?.SelectToken(this.SourceSystem).Value<string>();
+                        string sourceSubproperty = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("fromsubproperty")?.Value<string>();
                         if (sourceSubproperty == null)
                         {
                             string message = String.Format("missing 'fromsubproperty' for destination system '{0}' for rule {1}", this.DestinationSystem, mappingrule.ToString().Replace(Environment.NewLine, String.Empty));
@@ -218,7 +218,7 @@ namespace acmemapper
 
                     // null values should not be proceed as nested destination type
                     string destinationpropertyname = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("property")?.Value<string>();
-                    string destinationSubproperty = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("tosubproperty")?.SelectToken(this.DestinationSystem)?.Value<string>();
+                    string destinationSubproperty = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("tosubproperty")?.Value<string>();
                     string destinationSubpropertyType = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("type")?.Value<string>();
                     JToken destinationSubpropertyTypeDefaultValue = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("default");
                     string destinationInvoke = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("invoke")?.Value<string>();

@@ -120,8 +120,7 @@ namespace Acme.Mapper.CoreTests
                 mappingRules: new JObject{
                     { systemA, new JObject {{ property, "sourceproperty"} } } ,
                     { systemB, new JObject {{ property, "destinationproperty"},
-                        { tosubproperty, new JObject {
-                            { systemB, "destinationsubproperty"} } } } } });
+                        { tosubproperty,  "destinationsubproperty"} } } });
 
             Assert.AreEqual("stringvalue", output["destinationproperty"]["destinationsubproperty"].Value<string>());
         }
@@ -191,8 +190,7 @@ namespace Acme.Mapper.CoreTests
                 mappingRules: new JObject{
                     { systemA, new JObject {{ property, "sourceproperty"} } } ,
                     { systemB, new JObject {{ property, "destinationproperty"},
-                        { "fromsubproperty", new JObject {
-                            { systemA, "sourcesubproperty"} } } } } });
+                        { "fromsubproperty",  "sourcesubproperty"} } } });
 
             Assert.AreEqual("stringvalue", output["destinationproperty"].Value<string>());
         }
@@ -260,8 +258,7 @@ namespace Acme.Mapper.CoreTests
                 mappingRules: new JObject{
                     { systemA, new JObject {{ property, "sourceproperty"} } } ,
                     { systemB, new JObject {{ property, "destinationproperty"},
-                        { tosubproperty, new JObject {
-                            { systemB, "destinationsubproperty"} } } } } } );
+                        { tosubproperty, "destinationsubproperty" } } } } );
             
             Assert.AreEqual(JTokenType.Null, output["destinationproperty"].Type);
         }
@@ -276,13 +273,11 @@ namespace Acme.Mapper.CoreTests
                 /*mappingRules:*/new JObject{
                     { systemA, new JObject {{ property, "sourceproperty1"} } } ,
                     { systemB, new JObject {{ property, "destinationproperty"},
-                        { tosubproperty, new JObject {
-                            { systemB, "destinationsubproperty1"} } } } } },
+                        { tosubproperty, "destinationsubproperty1" } } } },
                 new JObject{
                     { systemA, new JObject {{ property, "sourceproperty2"} } } ,
                     { systemB, new JObject {{ property, "destinationproperty"},
-                        { tosubproperty, new JObject {
-                            { systemB, "destinationsubproperty2"} } } } } });
+                        { tosubproperty, "destinationsubproperty2" } } } });
 
             Assert.AreEqual(JTokenType.Null, output["destinationproperty"].Type);
         }
@@ -410,8 +405,7 @@ namespace Acme.Mapper.CoreTests
                 mappingRules: new JObject{
                     { systemA, new JObject {{ property, "sourceproperty"} } } ,
                     { systemB, new JObject {{ property, "destination"},
-                        { tosubproperty, new JObject {
-                            { systemB, "destinationsubproperty"} } } } } } );
+                        { tosubproperty, "destinationsubproperty" } } } } );
 
             Assert.AreEqual("stringvalue", output.destination.destinationsubproperty);
         }
@@ -425,8 +419,7 @@ namespace Acme.Mapper.CoreTests
                 mappingRules: new JObject{
                         { systemA, new JObject {{ property, "source"} } } ,
                         { systemB, new JObject {{ property, "destinationproperty"},
-                                                  { "fromsubproperty", new JObject {
-                                                      {systemA, "sourcesubproperty"} } } } } });
+                                                  { "fromsubproperty", "sourcesubproperty"} } } });
 
             Assert.AreEqual("stringvalue", output["destinationproperty"].Value<string>());
         }
@@ -442,8 +435,7 @@ namespace Acme.Mapper.CoreTests
                 mappingRules: new JObject{
                     { systemA, new JObject {{ property, "sourceproperty"} } } ,
                     { systemB, new JObject {{ property, "nonexistingpocoproperty"},
-                        { tosubproperty, new JObject {
-                            { systemB, "destinationsubproperty"} } } } } });
+                        { tosubproperty, "destinationsubproperty" } } } });
 
             Assert.AreEqual("stringvalue", extrafields["nonexistingpocoproperty"].Value<string>());
         }
@@ -462,8 +454,7 @@ namespace Acme.Mapper.CoreTests
                 mappingRules: new JObject{
                         { systemA, new JObject {{ property, "source"} } } ,
                         { systemB, new JObject {{ property, "destinationmissingPOCOproperty"},
-                                                  { "fromsubproperty", new JObject {
-                                                      {systemA, "sourcesubproperty"} } } } } });
+                                                  { "fromsubproperty", "sourcesubproperty"} } } });
 
             Assert.AreEqual("stringvalue", extrafields["destinationmissingPOCOproperty"].Value<string>());
         }
@@ -479,8 +470,7 @@ namespace Acme.Mapper.CoreTests
                 mappingRules: new JObject{
                     { systemA, new JObject {{ property, "sourceproperty"} } } ,
                     { systemB, new JObject {{ property, "nonexistingpocoproperty"},
-                        { tosubproperty, new JObject {
-                            { systemB, "destinationsubproperty"} } } } } });
+                        { tosubproperty, "destinationsubproperty" } } } });
         }
 
     }
