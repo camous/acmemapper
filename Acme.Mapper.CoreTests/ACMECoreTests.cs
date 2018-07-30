@@ -471,7 +471,6 @@ namespace Acme.Mapper.CoreTests
                     { systemB, new JObject {{ property, "destinationproperty"},
                         { "patternValue", "before_{value}_after" } } } });
 
-            // does this test, due to explicit cast of Value<int>() make sense ?
             Assert.AreEqual("before_stringvalue_after", output["destinationproperty"].Value<string>());
         }
 
