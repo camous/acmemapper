@@ -21,11 +21,12 @@ namespace Acme.Mapper.Tests
 			mapper = new acmemapper.Mapper();
 
             // load json schema files
-            foreach (var schema in System.IO.Directory.GetFiles(@"schema", "*.json"))
-            {
-                var fileinfo = new System.IO.FileInfo(schema);
-                schemas.Add(fileinfo.Name.Replace(fileinfo.Extension, String.Empty), JsonSchema4.FromFileAsync(schema).Result);
-            }
+            if(System.IO.Directory.Exists(@"schema"))
+                foreach (var schema in System.IO.Directory.GetFiles(@"schema", "*.json"))
+                {
+                    var fileinfo = new System.IO.FileInfo(schema);
+                    schemas.Add(fileinfo.Name.Replace(fileinfo.Extension, String.Empty), JsonSchema4.FromFileAsync(schema).Result);
+                }
         }
 
         
