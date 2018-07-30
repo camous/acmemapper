@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.0;net461</TargetFrameworks>
@@ -6,7 +6,7 @@
     <Company>Bearingpoint</Company>
     <Description>JSON declarative mapping engine</Description>
     <PackageProjectUrl>https://github.com/camous/acmemapper</PackageProjectUrl>
-    <Version>2.1.0</Version>
+    <Version>2.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
