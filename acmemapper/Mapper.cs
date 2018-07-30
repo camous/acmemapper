@@ -223,6 +223,7 @@ namespace acmemapper
                     JToken destinationSubpropertyTypeDefaultValue = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("default");
                     string destinationInvoke = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("invoke")?.Value<string>();
                     JToken destinationTransformations = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("map");
+                    string patternValue = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("patternValue")?.Value<string>();
 
                     string destinationArraySubproperty = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("toarraysubproperty")?.SelectToken(this.DestinationSystem)?.Value<string>();
 
@@ -264,6 +265,10 @@ namespace acmemapper
                     // transform value
                     if (destinationTransformations != null && value != null)
                         value = this.ApplyValueTransformation(destinationTransformations, value);
+
+                    // Format value with defined Pattern
+                    if (patternValue != null)
+                        value = this.ApplyValueRework(patternValue, value);
 
                     // if destination object is a "free one" like JObject, we do not check destination mapping
                     if (newObj is JObject)
@@ -470,6 +475,18 @@ namespace acmemapper
             }
 
             return output;
+        }
+
+        /// <summary>
+        /// Perform a C# replace action in order to customize de value output.
+        /// </summary>
+        /// <param name="pattern">extra content added to the value, sample : prefix{value}suffix</param>
+        /// <param name="input">value JToken</param>
+        /// <returns></returns>
+        private string ApplyValueRework(string pattern, JToken input)
+        {
+            var result = pattern.Replace("{value}", input.ToString());
+            return result;
         }
     }
 }
