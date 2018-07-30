@@ -461,6 +461,21 @@ namespace Acme.Mapper.CoreTests
 
 
         [TestMethod]
+        public void MappingWithPatternValue()
+        {
+            var output = TestCase<JObject, JObject>(
+                input: new JObject {
+                    { "sourceproperty", "stringvalue" } },
+                mappingRules: new JObject{
+                    { systemA, new JObject {{ property, "sourceproperty"} } } ,
+                    { systemB, new JObject {{ property, "destinationproperty"},
+                        { "patternValue", "before_{value}_after" } } } });
+
+            // does this test, due to explicit cast of Value<int>() make sense ?
+            Assert.AreEqual("before_stringvalue_after", output["destinationproperty"].Value<string>());
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(Exception))]
         public void MappingToMissingPOCOSubpropertyNonExpected()
         {
