@@ -326,6 +326,36 @@ namespace Acme.Mapper.CoreTests
         }
 
         [TestMethod]
+        public void MappingMapWithEmptyKey()
+        {
+            var output = TestCase<JObject, JObject>(
+                input: new JObject {
+                     { "sourceproperty", "" } },
+                mappingRules: new JObject{
+                    { systemA, new JObject {{ property, "sourceproperty"} } } ,
+                    { systemB, new JObject {{ property, "destinationproperty"},
+                        { "map", new JObject {
+                            { "", "stringone"} } } } } });
+
+            Assert.AreEqual("stringone", output["destinationproperty"].Value<string>());
+        }
+
+        [TestMethod]
+        public void MappingMapWithDateKey()
+        {
+            var output = TestCase<JObject, JObject>(
+                input: new JObject {
+                     { "sourceproperty", "2018-07-30T23:22:25Z" } },
+                mappingRules: new JObject{
+                    { systemA, new JObject {{ property, "sourceproperty"} } } ,
+                    { systemB, new JObject {{ property, "destinationproperty"},
+                        { "map", new JObject {
+                            { "2018-07-30T23:22:25Z", "stringone"} } } } } });
+
+            Assert.AreEqual("stringone", output["destinationproperty"].Value<string>());
+        }
+
+        [TestMethod]
         public void MappingMapDefault()
         {
             var output = TestCase<JObject,JObject>(

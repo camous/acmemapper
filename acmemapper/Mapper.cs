@@ -459,7 +459,12 @@ namespace acmemapper
         private JToken ApplyValueTransformation(JToken map, JToken input)
         {
             var inputkey = input.Value<string>();
-            var output = map?.SelectToken(inputkey);
+
+            // if type is Date, json has tendencies to format it and not match anymore
+            if (input.Type == JTokenType.Date)  
+                inputkey = input.Value<DateTime>().ToString("s") + "Z";
+  
+            var output = map[inputkey];
             if (map != null && output == null)
             {
                 var defaultToken = map.SelectToken("$default");
