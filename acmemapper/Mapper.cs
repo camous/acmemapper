@@ -270,6 +270,13 @@ namespace acmemapper
                     if (patternValue != null)
                         value = this.ApplyValueRework(patternValue, value);
 
+                    if (mappingrule[this.DestinationSystem]["ignoreIfNull"] != null &&
+                       mappingrule[this.DestinationSystem]["ignoreIfNull"].Value<bool>() == true &&
+                       value.Type == JTokenType.Null)
+                        continue;
+
+
+
                     // if destination object is a "free one" like JObject, we do not check destination mapping
                     if (newObj is JObject)
                     {
