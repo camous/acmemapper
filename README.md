@@ -10,23 +10,14 @@
 Mapping definition
 ```json
 {
-    "$version" : "1.0",
     "myobjecttype" : [
         {
-            "systemA" : {
-                "property" : "systemAfield1"
-            },
-            "systemB" : {
-                "property" : "systemBfield1"
-            }
+            "systemA" : "systemAfield1",
+            "systemB" : "systemBfield1"
         },
         {
-            "systemA" : {
-                "property" : "systemAfield2"
-            },
-            "systemB" : {
-                "property" : "systemBfield2"
-            }
+            "systemA" : "systemAfield2",
+            "systemB" : "systemBfield2"
         }
     ]
 }
@@ -37,7 +28,7 @@ C# source code with
     using acmemapper;
     ...
     var mapper = new Mapper("systemA", "systemB");
-    var output = mapper.Map<JObject,JObject>("myobjecttype",new JObject { { "systemAfield1" : "mystringvalue" } });
+    var output = mapper.Map<JObject,JObject>("myobjecttype",new JObject { { "systemAfield1" , "mystringvalue" } });
 ```
 
 JObject/JSON output
