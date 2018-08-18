@@ -92,8 +92,7 @@ namespace acmemapper
                     var entity = entityjson.Children<JProperty>().First(x => x.Name != "$version");
                     this.jsonrules.Add(entity.Name, entity.Value);
 
-                    // TODO we use the last version we found
-                    this.MappingVersion = entityjson["$version"].Value<String>();
+                    this.MappingVersion = entityjson["$version"]?.Value<String>();
                 }
             }
         }
