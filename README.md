@@ -66,7 +66,7 @@ JSON input
 ```json
 {
 	"systemAfield2": {
-		"nesteddestinationproperty": "mystringvalue"
+		"nestedsourceproperty": "mystringvalue"
 	}
 }
 ```
