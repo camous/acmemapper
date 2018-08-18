@@ -38,11 +38,54 @@ JObject/JSON output
 }
 ```
 
+A sligthly more complex mapping definition including `modifiers`
+```json
+{
+  "myobjecttype": [
+    {
+      "systemA": "systemAfield2",
+      "systemB": {
+        "property": "systemBfield2",
+        "fromsubproperty": "nestedsourceproperty",
+        "tosubproperty": "nesteddestinationproperty",
+        "ignoreIfNull": true,
+        "invoke": "ToUpperInvariant",
+        "map": {
+          "MYSTRINGVALUE": "mappedvalueinupperletter",
+          "mystringvalue": "mappedvalueinsmallletter",
+          "myintegervalue": 1,
+          "$default": false
+        }
+      }
+    }
+  ]
+}
+```
+
+JSON input
+```json
+{
+	"systemAfield2": {
+		"nesteddestinationproperty": "mystringvalue"
+	}
+}
+```
+
+JSON output
+```json
+{
+    "systemBfield2": {
+        "nesteddestinationproperty": "mappedvalueinupperletter"
+    }
+}
+```
+
 ## HOW TO
 * [First mapping in 5 minutes](https://github.com/camous/acmemapper/wiki/HOW-TO-:-First-mapping-in-Visual-Studio)
 
 ## Features
 
+* Double direction mapping
 * [Nested JSON content mapping](https://github.com/camous/acmemapper/wiki/Nested-objects)
 * 1...N mapping definition
 * POCO basic object composition
