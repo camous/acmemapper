@@ -177,7 +177,7 @@ namespace acmemapper
                 var mappingrules = jsonentity.Where(x =>
                     x.Value<JObject>(this.SourceSystem) != null &&
                     x.Value<JObject>(this.DestinationSystem) != null &&
-                    x.Value<JObject>(this.SourceSystem)["property"].Value<string>() == property.Key).ToList();
+                    x.Value<JObject>(this.SourceSystem)["property"].Value<string>() == property.Key);
 
                 if (mappingrules.Count() == 0)
                 {
