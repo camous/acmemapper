@@ -82,18 +82,18 @@ namespace acmemapper
             };
             this.RaiseExceptionOnWarning = false;
 
-            this.jsonrules = new JObject();
-
             if (!skipLoadingFromMaps)
             {
+                var mappingrules = new JObject();
                 foreach (var entityfile in System.IO.Directory.GetFiles(jsonschemadirectory, "*.json"))
                 {
                     var entityjson = JObject.Parse(System.IO.File.ReadAllText(entityfile));
                     var entity = entityjson.Children<JProperty>().First(x => x.Name != "$version");
-                    this.jsonrules.Add(entity.Name, entity.Value);
-
+                    mappingrules.Add(entity.Name, entity.Value);
+                    
                     this.MappingVersion = entityjson["$version"]?.Value<String>();
                 }
+                this.LoadMapping(mappingrules);
             }
         }
 
@@ -103,9 +103,19 @@ namespace acmemapper
         /// <param name="rules"></param>
         public void LoadMapping(JObject rules)
         {
+            this.jsonrules = new JObject();
+
             // TODO json schema check ?
             if (rules != null)
+            {
+                // rework simplified mapping
+                // systemA : "sourcefield" -> systemA : { property : "sourcefield" }
+                var simplemappings = rules.SelectTokens("$.*[*].*").Where(x => x.Type == JTokenType.String);
+                foreach (var simplemapping in simplemappings)
+                    simplemapping.Replace(new JObject(new JProperty("property", simplemapping.Value<string>())));
+
                 this.jsonrules = rules;
+            }
         }
 
         /// <summary>

@@ -53,6 +53,32 @@ namespace Acme.Mapper.CoreTests
         }
 
         [TestMethod]
+        public void MappingSimplifiedWithString()
+        {
+            var output = TestCase<JObject, JObject>(
+                mappingRules: new JObject{
+                    { systemA, "sourceproperty"} ,
+                    { systemB, "destinationproperty" } },
+                input: new JObject {
+                    { "sourceproperty", "stringvalue" } });
+
+            Assert.AreEqual("stringvalue", output["destinationproperty"].Value<string>());
+        }
+
+        [TestMethod]
+        public void MappingPartialSimplifiedWithString()
+        {
+            var output = TestCase<JObject, JObject>(
+                mappingRules: new JObject{
+                    { systemA, _property("sourceproperty")} ,
+                    { systemB, "destinationproperty" } },
+                input: new JObject {
+                    { "sourceproperty", "stringvalue" } });
+
+            Assert.AreEqual("stringvalue", output["destinationproperty"].Value<string>());
+        }
+
+        [TestMethod]
         public void MappingWithString()
         {
             var output = TestCase<JObject,JObject>(
@@ -516,6 +542,5 @@ namespace Acme.Mapper.CoreTests
                     { systemB, new JObject {{ property, "nonexistingpocoproperty"},
                         { tosubproperty, "destinationsubproperty" } } } });
         }
-
     }
 }
