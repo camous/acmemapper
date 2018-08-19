@@ -38,6 +38,7 @@ JObject/JSON output
 }
 ```
 
+### Another example
 A sligthly more complex mapping definition including `modifiers`
 ```json
 {
