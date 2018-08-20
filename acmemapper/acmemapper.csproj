@@ -6,7 +6,7 @@
     <Company>Bearingpoint</Company>
     <Description>JSON declarative mapping engine</Description>
     <PackageProjectUrl>https://github.com/camous/acmemapper</PackageProjectUrl>
-    <Version>2.2.0</Version>
+    <Version>2.2.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

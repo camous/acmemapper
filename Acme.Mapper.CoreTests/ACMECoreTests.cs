@@ -352,6 +352,36 @@ namespace Acme.Mapper.CoreTests
         }
 
         [TestMethod]
+        public void MappingMapWithInputNull()
+        {
+            var output = TestCase<JObject, JObject>(
+                input: new JObject {
+                     { "sourceproperty", null } },
+                mappingRules: new JObject{
+                    { systemA, new JObject {{ property, "sourceproperty"} } } ,
+                    { systemB, new JObject {{ property, "destinationproperty"},
+                        { "map", new JObject {
+                            { "1", "stringone"} } } } } });
+
+            Assert.AreEqual(JTokenType.Null, output["destinationproperty"].Type);
+        }
+
+        [TestMethod]
+        public void MappingMapWithOutputNull()
+        {
+            var output = TestCase<JObject, JObject>(
+                input: new JObject {
+                     { "sourceproperty", "1" } },
+                mappingRules: new JObject{
+                    { systemA, new JObject {{ property, "sourceproperty"} } } ,
+                    { systemB, new JObject {{ property, "destinationproperty"},
+                        { "map", new JObject {
+                            { "1", null} } } } } });
+
+            Assert.AreEqual(JTokenType.Null, output["destinationproperty"].Type);
+        }
+
+        [TestMethod]
         public void MappingMapWithEmptyKey()
         {
             var output = TestCase<JObject, JObject>(
