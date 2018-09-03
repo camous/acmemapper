@@ -572,5 +572,24 @@ namespace Acme.Mapper.CoreTests
                     { systemB, new JObject {{ property, "nonexistingpocoproperty"},
                         { tosubproperty, "destinationsubproperty" } } } });
         }
+
+        [TestMethod]
+        public void MappingWithOverwrite()
+        {
+            var output = TestCase<JObject, JObject>(
+                input: new JObject {
+                    { "sourceproperty1", "stringvalue" },
+                    { "sourceproperty2", "stringvalue" }
+                },
+                mappingRules: new [] {new JObject{
+                    { systemA, new JObject {{ property, "sourceproperty1"} } } ,
+                    { systemB, new JObject {{ property, "destinationproperty"},
+                        { "overwrite", true} } } },
+                    new JObject{
+                    { systemA, new JObject {{ property, "sourceproperty2"} } } ,
+                    { systemB, new JObject {{ property, "destinationproperty"},
+                        { "overwrite", true}}  } }
+                });
+        }
     }
 }

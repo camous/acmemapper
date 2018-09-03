@@ -365,9 +365,12 @@ namespace acmemapper
                                 }
                                 else
                                 {
-                                    string message = String.Format("property '{0}' already exists. no subproperty defined for '{1}'.'{0}'", destinationpropertyname, this.DestinationSystem);
-                                    Trace.TraceError(message);
-                                    throw new Exception(message);
+                                    if (mappingrule[this.DestinationSystem]?["overwrite"] == null || mappingrule[this.DestinationSystem]["overwrite"].Value<bool>() == false)
+                                    {
+                                        string message = String.Format("property '{0}' already exists. no subproperty defined for '{1}'.'{0}'", destinationpropertyname, this.DestinationSystem);
+                                        Trace.TraceError(message);
+                                        throw new Exception(message);
+                                    }
                                 }
                             }
 
