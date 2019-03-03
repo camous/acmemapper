@@ -5,6 +5,8 @@
 `ACMEMAPPER` has been developed focusing on mapping definition maintainability & lisibility over flexibility & performance: mapping definitions are declared in JSON and reloaded on each new `ACMEMAPPER` object. Many source or destination objects type are supported such `JObject` or any `POCO` ones.
 `ACMEMAPPER` has been initiality developed in context of an Enterprise Service Bus which has to support & manage many mapping activities and update mapping definitions without re-build & deploy.
 
+![](wiki/images/acmemapper.gif)
+
 ## Simple mapping example
 
 Mapping definition
