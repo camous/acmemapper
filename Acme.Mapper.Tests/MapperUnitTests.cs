@@ -64,8 +64,6 @@ namespace Acme.Mapper.Tests
 
             // json schema validation
             // only acme json is checked, either input or output
-            // for 1 ... N system mapping : ACME employee -> CRM systemuser & CRM contact
-            // entity name after "." is ignored
             var entityname = entity.Contains('.') ? entity.Substring(0, entity.IndexOf('.')) : entity;
             var schema = schemas[entityname];
             var acmeerrors = schema.Validate(sourcesystem == "acme" ? input : output);
