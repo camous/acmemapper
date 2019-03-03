@@ -98,6 +98,7 @@ JSON output
 * Basic method invokation (eg. `ToLowerInvariant`)
 
 `modifiers` orders
+
 ![](wiki/images/modifiers.png)
 
 ## Limitations
