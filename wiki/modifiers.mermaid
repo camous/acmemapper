@@ -1,0 +1,13 @@
+graph LR
+    ignore-->ignoreIfNull1
+    ignoreIfNull1[ignoreIfNull]-->fromsubproperty
+    fromsubproperty-->tosubproperty
+    fromsubproperty-->toarraysubproperty[toarraysubproperty<br/>$action:merge / add]
+    tosubproperty-->type["type (casting)"]
+    toarraysubproperty-->type
+    type-->invoke["invoke<br />eg<br/> Trim()<br/> ToLowerInvariant()"]
+    invoke-->map["map (switch)"]
+    map-->patternValue
+    patternValue-->ignoreIfNull2[ignoreIfNull]
+    ignoreIfNull2-->overwrite
+    overwrite-->addproperties

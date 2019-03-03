@@ -89,11 +89,16 @@ JSON output
 * Double direction mapping
 * [Nested JSON content mapping](https://github.com/camous/acmemapper/wiki/Nested-objects)
 * 1...N mapping definition
+* N...1 overwrite support
+* N...array support
 * POCO basic object composition
 * Control flags : `Ignore` / `IgnoreIfNull`
 * Basic casting
 * Basic transformation : switch (`map`)
 * Basic method invokation (eg. `ToLowerInvariant`)
+
+`modifiers` orders
+![](wiki/images/modifiers.png)
 
 ## Limitations
 
