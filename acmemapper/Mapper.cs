@@ -355,11 +355,14 @@ namespace acmemapper
                                         }
                                         else
                                         {
-                                            string message = String.Format("Destination '{0}' property already filled in. Duplicate detected '{1}'", destinationpropertyname, property.Value.ToString().Replace(Environment.NewLine, String.Empty));
-                                            if (this.RaiseExceptionOnWarning)
-                                                throw new Exception(message);
-                                            else
-                                                Trace.TraceWarning(message);
+                                            if (mappingrule[this.DestinationSystem]?["overwrite"] == null || mappingrule[this.DestinationSystem]["overwrite"].Value<bool>() == false)
+                                            {
+                                                string message = String.Format("Destination '{0}' property already filled in. Duplicate detected '{1}'", destinationpropertyname, property.Value.ToString().Replace(Environment.NewLine, String.Empty));
+                                                if (this.RaiseExceptionOnWarning)
+                                                    throw new Exception(message);
+                                                else
+                                                    Trace.TraceWarning(message);
+                                            }
                                         }
                                     }
                                 }
