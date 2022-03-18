@@ -591,5 +591,32 @@ namespace Acme.Mapper.CoreTests
                         { "overwrite", true}}  } }
                 });
         }
+
+        [TestMethod]
+        public void MappingRegex()
+        {
+            var output = TestCase<JObject, JObject>(
+                input: new JObject {
+                    { "sourceproperty1", "code1234" }
+                },
+                mappingRules: new[] {new JObject{
+                    { systemA, new JObject {{ property, "sourceproperty1"} } } ,
+                    { systemB, new JObject {
+                        { property, "destinationproperty1"},
+                        { "regex", "[0-9]+"} }
+                    } },
+                                    new JObject{
+                    { systemA, new JObject {{ property, "sourceproperty1"} } } ,
+                    { systemB, new JObject {
+                        { property, "destinationproperty2"},
+                        { "regex", "[0-9]+"},
+                        { "type", "System.Int16"},
+                    }
+                    } }
+                });
+
+            Assert.AreEqual("1234", output["destinationproperty1"].Value<string>());
+            Assert.AreEqual(1234, output["destinationproperty1"].Value<Int16>());
+        }
     }
 }
