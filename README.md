@@ -97,7 +97,8 @@ JSON output
 * Control flags : `Ignore` / `IgnoreIfNull`
 * Basic casting
 * Basic transformation : switch (`map`)
-* Basic method invokation (eg. `ToLowerInvariant`)
+* Parameterless method invokation (eg. `ToLowerInvariant`)
+* Basic regex support (`regex`)
 
 `modifiers` orders
 
