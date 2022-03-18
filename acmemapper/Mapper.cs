@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace acmemapper
 {
@@ -233,10 +234,16 @@ namespace acmemapper
                     string destinationInvoke = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("invoke")?.Value<string>();
                     JToken destinationTransformations = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("map");
                     string patternValue = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("patternValue")?.Value<string>();
+                    string destinationRegex = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("regex")?.Value<string>();
 
                     string destinationArraySubproperty = mappingrule.SelectToken(this.DestinationSystem)?.SelectToken("toarraysubproperty")?.SelectToken(this.DestinationSystem)?.Value<string>();
 
+                    /*** apply transformations ***/
+                    // regex
+                    if (!String.IsNullOrEmpty(destinationRegex))
+                        value = Regex.Match(value.Value<string>(), destinationRegex).Value;
 
+                    // type casting
                     if (destinationSubpropertyType != null)
                     {
                         // if we are in a cast situation, but getting a null or empty string in input, return null
@@ -266,7 +273,8 @@ namespace acmemapper
                         }
                     }
 
-                    /*** apply transformations ***/
+                    
+
                     // invoke methods
                     if (!String.IsNullOrEmpty(destinationInvoke))
                         value = this.ApplyInvokeTransformation(destinationInvoke, value);
