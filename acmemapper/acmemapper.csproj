@@ -6,11 +6,11 @@
     <Company>Bearingpoint</Company>
     <Description>JSON declarative mapping engine</Description>
     <PackageProjectUrl>https://github.com/camous/acmemapper</PackageProjectUrl>
-    <Version>2.5.0</Version>
+    <Version>2.5.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
